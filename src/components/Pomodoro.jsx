@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './pomodoro.css'
 
+/// Main class
 class Pomodoro extends Component {
   constructor(props) {
     super(props);
@@ -13,14 +14,16 @@ class Pomodoro extends Component {
 		seconds: defaultSeconds,
 		state: "stopped"
     })
+
+    // variables used in to detect doubleClick
 	this.clickCount = 0;
     this.singleClickTimer = '';
   }
 
-  /// timer to string
+  /// timer variables to string
   timerToString = () => {
 	let str = ""
-	/// If minutes is only one digit then prepend another
+	// If minutes is only one digit then prepend a 0
 	if (this.state.minutes < 10) {
 		str += "0"
 	}
@@ -28,6 +31,7 @@ class Pomodoro extends Component {
 
 	str += ":"
 
+    // If seconds is only one digit then prepend a 0 
 	if (this.state.seconds < 10) {
 		str += "0"
 	}
@@ -37,8 +41,9 @@ class Pomodoro extends Component {
 
   /// update timer every tick
   tick = () => {
-	// check if timer is stopped
+	// check if timer is stopped or paused
 	if (this.state.state != "active") {
+        // if it is then do not execute further, thus stopping the clock
 		return
 	} else {
 		// continue clock
@@ -48,6 +53,7 @@ class Pomodoro extends Component {
 	let newMinutes = this.state.minutes
 	let newSeconds = this.state.seconds
 
+    // if seconds are moving below 0 then wrap to 59 and decrese minutes
 	if (this.state.seconds === 0) {
 		newMinutes--
 		newSeconds = 59
@@ -68,7 +74,7 @@ class Pomodoro extends Component {
 	}
   }
 
-
+  /// stop and reset the timer
   handleDoubleClick = () => {
 	this.setState({
 		state: "stopped",
@@ -77,7 +83,8 @@ class Pomodoro extends Component {
 	})
   }	
 
-  timerClicked = (e) => {
+  /// active or pause the timer 
+  handleSingleClick = (e) => {
 	// start the timer
 	if (this.state.state === "active") {
 		this.setState({
@@ -90,12 +97,13 @@ class Pomodoro extends Component {
 	}
   }
 
+  // Detects double clicks, execs handleSingleClick or handleDoubleClick
   handleClicks = () => {
   	this.clickCount++;
     if (this.clickCount === 1) {
     	this.singleClickTimer = setTimeout(function() {
        		this.clickCount = 0;
-        	this.timerClicked();
+        	this.handleSingleClick();
         }.bind(this), 300);
 
     } else if (this.clickCount === 2) {
