@@ -5,7 +5,7 @@ import './pomodoro.css'
 class Pomodoro extends Component {
   constructor(props) {
     super(props);
-	let defaultMinutes= 25;
+	let defaultMinutes= 2;
 	let defaultSeconds= 0;
     this.state = ({
 		defaultMinutes,
@@ -23,6 +23,7 @@ class Pomodoro extends Component {
   /// timer variables to string
   timerToString = () => {
 	let str = ""
+    console.log(this.state)
 	// If minutes is only one digit then prepend a 0
 	if (this.state.minutes < 10) {
 		str += "0"
@@ -60,19 +61,20 @@ class Pomodoro extends Component {
 	} else {
 		newSeconds--
 	}	
+    
+    this.setState({
+        minutes: newMinutes,
+        seconds: newSeconds
+    })
 
 	// check if timer is done
-	if (newMinutes <= 0) {
+	if (newMinutes <= 0 && newSeconds <= 0) {
 		this.setState({
-			state: "finished"
-		})
-	} else {
-		this.setState({
-			minutes: newMinutes,
-			seconds: newSeconds
+			state: "stopped"
 		})
 	}
   }
+
 
   /// stop and reset the timer
   handleDoubleClick = () => {
@@ -90,7 +92,13 @@ class Pomodoro extends Component {
 		this.setState({
 			state: "paused"
 		}, this.tick)
-	} else {	
+	} else if (this.state.state === "stopped") {
+        this.setState({
+            state: "active",
+            minutes: this.state.defaultMinutes,
+            seconds: this.state.defaultSeconds
+        }, this.tick)  
+    } else {	
 		this.setState({
 			state: "active"
 		}, this.tick)
