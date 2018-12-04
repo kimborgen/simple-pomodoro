@@ -2,14 +2,13 @@
     width: 100%;
     height: 100%;
     display: grid;
-    justify-content: left;
+    justify-content: center;
     align-content: center;
 }
 
 .pomodoro__timer { 
     color: white;
-    font-size: 20vw;
-    padding-left: 22vw;
+    font-size: 35vmin;
     
     /* force cursor to be normal when hovering */
     cursor: default;
