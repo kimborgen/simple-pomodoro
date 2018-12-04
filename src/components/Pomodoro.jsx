@@ -100,11 +100,21 @@ class Pomodoro extends Component {
   
   /// stop and reset the timer
   handleDoubleClick = () => {
-    this.setState({
-      state: "paused",
-      minutes: this.state.defaultMinutes,
-      seconds: this.state.defaultSeconds
-    })
+    // check if we double click when it is allready reset
+    if (this.state.minutes == this.state.defaultMinutes &&
+      this.state.seconds == this.state.defaultSeconds) {
+      this.setState({ 
+        state: "paused",
+        minutes: this.state.defaultPauseMinutes,
+        seconds: this.state.defaultPauseSeconds,
+      })
+    } else { 
+      this.setState({
+        state: "paused",
+        minutes: this.state.defaultMinutes,
+        seconds: this.state.defaultSeconds
+      })
+    }
     this.resetAnimation()
   }	
 

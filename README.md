@@ -11,13 +11,20 @@ Why electron? Because i wanted to learn how to use it... :^)
 
 note that the transparrency comes from my window compositor (compton) and is not included in this program
 
+## Features
+- Normal timer
+- Pause timer
+- Reset timer to either normal or pause timer
+- System notification on timer end
+- Background color animation on timer end
+
 ## How to use
 
 Click on window to start or pause the timer
-
 Click on window after timer has reached zero to start pause timer
 
-Double click on window at any time to reset the timer back to 25 minutes
+Double click on window at any time to reset the timer back to Default
+Double click on window when timer is paused at Default to set timer to pause timer 
 
 ## How to install
 For now you have to use the development version:
@@ -34,9 +41,9 @@ You can also just use the web version by running `npm start` instead of `npm run
 
 ## Todo
 - Build & deploy - npm and aur?
-- notification or alarm when timer is done
+- <strike>notification or alarm when timer is done</strike>
 - Change length - presets maybe?
-- Pause timer - to know how long to take a break for
+- <strike>Pause timer - to know how long to take a break for </strike>
 - hotkeys
 - statistics?
 - website and mobile app
