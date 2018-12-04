@@ -72,11 +72,14 @@ class Pomodoro extends Component {
 	  if (newMinutes <= 0 && newSeconds <= 0) {
 		  this.setState({
 			  state: "stopped"
-		  })
+		  }, this.notifyOs)
   	}
   }
 
-
+  notifyOs = () => {
+    let newNotification = new Notification('Simple Pomodor', { body: 'Timer is done!' })
+  }
+  
   /// stop and reset the timer
   handleDoubleClick = () => {
     this.setState({
