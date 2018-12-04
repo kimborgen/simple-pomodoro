@@ -15,7 +15,9 @@ note that the transparrency comes from my window compositor (compton) and is not
 
 Click on window to start or pause the timer
 
-Double click on window to reset the timer
+Click on window after timer has reached zero to start pause timer
+
+Double click on window at any time to reset the timer back to 25 minutes
 
 ## How to install
 For now you have to use the development version:

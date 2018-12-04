@@ -6,13 +6,15 @@ class Pomodoro extends Component {
   constructor(props) {
     super(props);
 	  let defaultMinutes= 25;
-	  let defaultSeconds= 0;
+    let defaultSeconds= 0;
     this.state = ({
 		  defaultMinutes,
-		  defaultSeconds,
+      defaultSeconds,
+      defaultPauseMinutes: 5,
+      defaultPauseSeconds: 0,
 		  minutes: defaultMinutes,
 		  seconds: defaultSeconds,
-		  state: "stopped"
+		  state: "paused"
     })
 
     // variables used in to detect doubleClick
@@ -78,7 +80,7 @@ class Pomodoro extends Component {
   /// stop and reset the timer
   handleDoubleClick = () => {
     this.setState({
-      state: "stopped",
+      state: "paused",
       minutes: this.state.defaultMinutes,
       seconds: this.state.defaultSeconds
     })
@@ -94,8 +96,8 @@ class Pomodoro extends Component {
     } else if (this.state.state === "stopped") {
       this.setState({
         state: "active",
-        minutes: this.state.defaultMinutes,
-        seconds: this.state.defaultSeconds
+        minutes: this.state.defaultPauseMinutes,
+        seconds: this.state.defaultPauseSeconds
       }, this.tick)  
     } else {	
       this.setState({
