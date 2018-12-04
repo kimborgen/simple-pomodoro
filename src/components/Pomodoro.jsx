@@ -5,16 +5,17 @@ import './pomodoro.css'
 class Pomodoro extends Component {
   constructor(props) {
     super(props);
-	  let defaultMinutes= 25;
-    let defaultSeconds= 0;
+	  let defaultMinutes= 0;
+    let defaultSeconds= 5;
     this.state = ({
 		  defaultMinutes,
       defaultSeconds,
-      defaultPauseMinutes: 5,
-      defaultPauseSeconds: 0,
+      defaultPauseMinutes: 0,
+      defaultPauseSeconds: 2,
 		  minutes: defaultMinutes,
 		  seconds: defaultSeconds,
-		  state: "paused"
+      state: "paused",
+      className: "pomodoro",
     })
 
     // variables used in to detect doubleClick
@@ -72,13 +73,30 @@ class Pomodoro extends Component {
 	  if (newMinutes <= 0 && newSeconds <= 0) {
 		  this.setState({
 			  state: "stopped"
-		  }, this.notifyOs)
+      }, this.notifyOs)
+      this.startAnimation()
   	}
   }
 
+  /// send out native system notification
   notifyOs = () => {
     let newNotification = new Notification('Simple Pomodor', { body: 'Timer is done!' })
   }
+
+  /// start animation on timer
+  startAnimation = () => {
+    this.setState({
+      className: "pomodoro pomodoro__done"
+    })
+  }
+
+  /// reset animation on timer
+  resetAnimation = () => { 
+    this.setState({
+      className: "pomodoro"
+    })
+  }
+
   
   /// stop and reset the timer
   handleDoubleClick = () => {
@@ -87,6 +105,7 @@ class Pomodoro extends Component {
       minutes: this.state.defaultMinutes,
       seconds: this.state.defaultSeconds
     })
+    this.resetAnimation()
   }	
 
   /// active or pause the timer 
@@ -101,7 +120,8 @@ class Pomodoro extends Component {
         state: "active",
         minutes: this.state.defaultPauseMinutes,
         seconds: this.state.defaultPauseSeconds
-      }, this.tick)  
+      }, this.tick)
+      this.resetAnimation()
     } else {	
       this.setState({
         state: "active"
@@ -126,7 +146,7 @@ class Pomodoro extends Component {
 
   render() {
     return (
-      <div onClick={this.handleClicks} className="pomodoro">
+      <div onClick={this.handleClicks} className={this.state.className}>
         <h1 className="pomodoro__timer">{this.timerToString()}</h1>
       </div>
     );

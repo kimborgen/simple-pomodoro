@@ -19,3 +19,19 @@
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 }
+
+/* The animation code */
+@keyframes timer_done {
+    0%   {background-color:red; }
+    25%  {background-color:yellow; }
+    50%  {background-color:blue; }
+    75%  {background-color:green; }
+    100% {background-color:red; }
+}
+
+.pomodoro__done {
+    background-color: red;
+    animation-name: timer_done;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
