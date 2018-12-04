@@ -5,13 +5,13 @@ import './pomodoro.css'
 class Pomodoro extends Component {
   constructor(props) {
     super(props);
-	  let defaultMinutes= 0;
-    let defaultSeconds= 5;
+	  let defaultMinutes= 25;
+    let defaultSeconds= 0;
     this.state = ({
 		  defaultMinutes,
       defaultSeconds,
-      defaultPauseMinutes: 0,
-      defaultPauseSeconds: 2,
+      defaultPauseMinutes: 5,
+      defaultPauseSeconds: 0,
 		  minutes: defaultMinutes,
 		  seconds: defaultSeconds,
       state: "paused",
