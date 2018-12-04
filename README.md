@@ -21,9 +21,11 @@ note that the transparrency comes from my window compositor (compton) and is not
 ## How to use
 
 Click on window to start or pause the timer
+
 Click on window after timer has reached zero to start pause timer
 
 Double click on window at any time to reset the timer back to Default
+
 Double click on window when timer is paused at Default to set timer to pause timer 
 
 ## How to install
