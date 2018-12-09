@@ -44,8 +44,10 @@ You can also just use the web version by running `npm start` instead of `npm run
 ## Todo
 - Build & deploy - npm and aur?
 - <strike>notification or alarm when timer is done</strike>
-- Change length - presets maybe?
+- Change duration
 - <strike>Pause timer - to know how long to take a break for </strike>
 - hotkeys
+- persistent state in localstorage
+- Change title on each tick. (web)
 - statistics?
 - website and mobile app
