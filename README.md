@@ -44,6 +44,6 @@ You can also just use the web version by running `npm start` instead of `npm run
 - <strike>notification or alarm when timer is done</strike>
 - Change length - presets maybe?
 - <strike>Pause timer - to know how long to take a break for </strike>
-- hotkeys
+- <strike>hotkeys</strike>
 - statistics?
 - website and mobile app

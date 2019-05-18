@@ -16,11 +16,18 @@ class Pomodoro extends Component {
 		  seconds: defaultSeconds,
       state: "paused",
       className: "pomodoro",
+      modus: "timer",
     })
 
     // variables used in to detect doubleClick
 	  this.clickCount = 0;
     this.singleClickTimer = '';
+    window.addEventListener('keypress', (e) => {
+        if (e.keyCode == 13 || e.keyCode == 32) {
+          console.log("hey")
+          this.handleClicks()
+        }
+    }, false);
   }
 
   /// timer variables to string
