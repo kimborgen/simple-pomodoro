@@ -21,9 +21,11 @@ note that the transparrency comes from my window compositor (compton) and is not
 ## How to use
 
 Click on window to start or pause the timer
+
 Click on window after timer has reached zero to start pause timer
 
 Double click on window at any time to reset the timer back to Default
+
 Double click on window when timer is paused at Default to set timer to pause timer 
 
 ## How to install
@@ -42,8 +44,10 @@ You can also just use the web version by running `npm start` instead of `npm run
 ## Todo
 - Build & deploy - npm and aur?
 - <strike>notification or alarm when timer is done</strike>
-- Change length - presets maybe?
+- Change duration
 - <strike>Pause timer - to know how long to take a break for </strike>
 - <strike>hotkeys</strike>
+- persistent state in localstorage
+- Change title on each tick. (web)
 - statistics?
 - website and mobile app
