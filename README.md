@@ -1,3 +1,6 @@
+Demo at [https://kimborgen.com/simple-pomodoro] 
+_Probably not 100% up to date_
+
 # Simple Pomodoro Timer
 
 A very simple, elegant and easy-to-use pomodoro program.
